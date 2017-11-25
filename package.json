@@ -7,8 +7,8 @@
     "compile": "webpack",
     "start": "node server.js",
     "scss-compile": "node-sass --include-path scss www/style.scss www/style.css",
-    "watch-css": "npm run scss-compile",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch-css": "npm run scss-compile && node-sass www/style.scss www/style.css -w",
+    "test": "node test.js"
   },
   "keywords": [],
   "author": "hailee",

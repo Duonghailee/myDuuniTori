@@ -1,0 +1,19 @@
+/*
+styling center form*/
+form {
+  width: 50% !important;
+  margin: 0 auto !important; }
+
+.form-control {
+  position: fixed;
+  display: inline-block !important; }
+
+#page {
+  color: #1F1641;
+  background-color: #F49005; }
+
+.jumbotron {
+  background-color: #36688D !important; }
+
+.content {
+  background-color: #F18904 !important; }

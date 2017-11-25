@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, 'www'),
     filename: 'bundle.js',
   },
+  watch: true,
   module: {
     rules: [
       {
