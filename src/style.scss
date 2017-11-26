@@ -1,0 +1,31 @@
+/*
+styling center form*/
+$orange-main: #F49005;
+$blue-title: #36688D;
+$orange-title: #F18904;
+$black:#1F1641;
+
+form {
+    width: 50% !important;
+    margin: 0 auto !important;
+}
+.key, .where {
+    display:inline-block;
+}
+
+input{
+    float:left !important;
+}
+
+#page {
+    color: $black;
+    background-color: $orange-main;
+}
+
+.jumbotron {
+    background-color: $blue-title !important;
+}
+
+.content {
+    background-color:  $orange-title !important;
+}
