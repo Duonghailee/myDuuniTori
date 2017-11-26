@@ -41,16 +41,22 @@
         </div>
         <div id="search-form">
             <label>Enter entry you want to search for </label>
-            <form>
-                <div class="input-group">
-                   
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <input type="text" class="form-control" placeholder="Where...">
-              
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" onclick="search()">Go!</button>
-                    </span>
+            <form class="search-form" method="GET" action="/">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6">
+                        <input type="text" class="form-control key" size="40" placeholder="Search for...">
+                    </div>
+
+                    <div class="col-xs-12 col-lg-4">
+                        <input type="text" class="form-control where" size="4" placeholder="Where...">
+                    </div>
+                    <div class="col-xs-12 col-lg-2">
+                        <div class="col-xs-12 col-lg-8">
+                            <button type="button" class="btn btn-default" onclick="search()">Go!</button>
+                        </div>
+                    </div>
                 </div>
+
             </form>
         </div>
 

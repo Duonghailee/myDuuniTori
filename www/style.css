@@ -4,9 +4,11 @@ form {
   width: 50% !important;
   margin: 0 auto !important; }
 
-.form-control {
-  position: fixed;
-  display: inline-block !important; }
+.key, .where {
+  display: inline-block; }
+
+input {
+  float: left !important; }
 
 #page {
   color: #1F1641;
