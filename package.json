@@ -4,7 +4,8 @@
   "description": "My duunitori project",
   "main": "index.js",
   "scripts": {
-    "compile": "webpack",
+    "build": "webpack",
+    "postinstall": "npm run build",
     "start": "node server.js",
     "watch": "webpack-dev-server",
     "test": "node test.js"

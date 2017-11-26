@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   context: path.join(__dirname, 'src'),
-  entry: ['./main.js'],
+  entry: ['./entrypoint.js'],
   output: {
-    path: path.join(__dirname, 'www'),
+    path: path.join(__dirname, 'src'),
     filename: 'bundle.js'
   },
   module: {
@@ -12,7 +12,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: {
+          loader: 'babel-loader',
+          options:{
+            presets : ['react']
+          } 
+        }
       }, {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
@@ -23,11 +28,14 @@ module.exports = {
     modules: [path.join(__dirname, 'node_modules')]
   },
   devServer: {
-    port: 9000
+    port: 9000,
+    proxy: {
+      "/api": "http://localhost:3000"
+    }
   },
   plugins: [new HtmlWebpackPlugin({
       title: 'web search',
-      filename: path.join(__dirname, 'www', 'index.html'),
+      filename: path.join(__dirname, 'src', 'index.html'),
       template: 'index.html'
     })]
 };

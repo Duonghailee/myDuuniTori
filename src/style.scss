@@ -1,20 +1,19 @@
-/*
-styling center form*/
 $orange-main: #F49005;
 $blue-title: #36688D;
 $orange-title: #F18904;
 $black:#1F1641;
-
 form {
     width: 50% !important;
     margin: 0 auto !important;
 }
-.key, .where {
-    display:inline-block;
+
+.key,
+.where {
+    display: inline-block;
 }
 
-input{
-    float:left !important;
+input {
+    float: left !important;
 }
 
 #page {
@@ -27,5 +26,20 @@ input{
 }
 
 .content {
-    background-color:  $orange-title !important;
+    background-color: $orange-title !important;
+}
+
+.btn-next {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.btn-go {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.author {
+    bottom: 0;
 }
