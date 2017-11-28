@@ -15,12 +15,8 @@ class App extends Component {
             rows: [],
             next: 1
         };
-        this.searchHandler = this
-            .search
-            .bind(this);
-        this.loadMoreHandler = this
-            .loadMore
-            .bind(this);
+        this.searchHandler = this.search.bind(this);
+        this.loadMoreHandler = this.loadMore.bind(this);
     }
 
     search() {
@@ -32,81 +28,73 @@ class App extends Component {
         const area = this.areaInput.value;
         const search = this.searchInput.value;
         getData({area, search, next: this.state.next}).then(data => this.setState({
-            rows: this
-                .state
-                .rows
-                .concat(data.jobs),
+            rows: this.state.rows.concat(data.jobs),
             next: data.next
         }))
     }
     render() {
         //console.log(this.state.rows);
         return (
-            <div id="search-form">
-                <label>Enter entry you want to search for
-                </label>
-                <div className="row">
-                    <div className="col-xs-12 col-lg-6">
+            <div>
+                <div className="search-form">
+                    <div className="key ">
                         <input
                             ref={(el) => this.searchInput = el}
                             type="text"
-                            className="form-control key"
+                            className="form-control"
                             size="40"
                             placeholder="Search for..."/>
                     </div>
 
-                    <div className="col-xs-12 col-lg-4">
+                    <div className="where">
                         <input
                             ref={(el) => this.areaInput = el}
                             type="text"
-                            className="form-control where"
+                            className="form-control"
                             size="40"
                             placeholder="Where..."/>
                     </div>
 
-                    <div className="col-xs-12 col-lg-2">
-                        <div className="col-xs-12 col-lg-8">
-                            <button
-                                type="button"
-                                className="btn btn-default btn-go"
-                                onClick={this.searchHandler}>Go!
-                            </button>
-                        </div>
-                    </div>
+                    <button
+                        disabled=""
+                        type="button"
+                        className="btn btn-success btn-go"
+                        onClick={this.searchHandler}>Go!
+                    </button>
 
-                    <div className="col-xs-12 col-lg-12">
-                        <button
-                            type="button"
-                            className="btn btn-success btn-next"
-                            onClick={this.loadMoreHandler}>More
-                        </button>
-                    </div>
+                </div>
 
-                    <div className="col-xs-12 col-lg-12 table-responsive results">
-                        <table className="table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Job Title</th>
-                                    <th>Company</th>
-                                    <th>Date posted</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this
-                                    .state
-                                    .rows
-                                    .map((row, index) => (
-                                        <tr key={row.jobTitle + index}>
-                                            <td>{row.jobTitle}</td>
-                                            <td>{row.company}</td>
-                                            <td>{row.datePosted}</td>
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="col-xs-12 col-lg-12">
+                    <button
+                        disabled=""
+                        type="button"
+                        className="btn btn-success btn-next"
+                        onClick={this.loadMoreHandler}>More
+                    </button>
+                </div>
+
+                <div className="col-xs-12 col-lg-12 table-responsive results">
+                    <table className="table-striped">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Company</th>
+                                <th>Date posted</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.rows.map((row, index) => (
+                                    <tr key={row.jobTitle + index}>
+                                        <td className="job-title"><a href={"https://duunitori.fi/tyopaikat/tyo/"+row.jobLink} target="_blank">{row.jobTitle}</a></td>
+                                        <td>{row.company}</td>
+                                        <td>{row.datePosted}</td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         );
     }
 }

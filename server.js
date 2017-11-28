@@ -25,9 +25,7 @@ app.get('/api', function (req, res) {
       console.error(error);
     } else {
       res.send({
-        next: querystring
-          .parse(body.next)
-          .page,
+        next: querystring.parse(body.next).page,
         jobs: mapJobs(body.results)
       });
     }
@@ -39,18 +37,14 @@ function mapJobs(jobList) {
     return [];
   }
   return jobList.map(row => {
-    return {jobTitle: row.heading, company: row.company_name, datePosted: row.date_posted}
+    return {jobTitle: row.heading, company: row.company_name, datePosted: row.date_posted, jobLink: row.slug}
   })
 }
 
 //separte server
 
 const server = app.listen(process.env.PORT || 3000, function () {
-  const host = server
-    .address()
-    .address;
-  const port = server
-    .address()
-    .port;
+  const host = server.address().address;
+  const port = server.address().port;
   console.log('app is listening at http://%s:%s', host, port);
 });

@@ -991,7 +991,7 @@ exports = module.exports = __webpack_require__(18)(undefined);
 
 
 // module
-exports.push([module.i, "form {\n  width: 50% !important;\n  margin: 0 auto !important; }\n\n.key,\n.where {\n  display: inline-block; }\n\ninput {\n  float: left !important; }\n\n#page {\n  color: #1F1641;\n  background-color: #F49005; }\n\n.jumbotron {\n  background-color: #098AE6 !important; }\n\n.content {\n  background-color: #F18904 !important; }\n\n.btn-next {\n  position: fixed;\n  bottom: 0;\n  right: 12px;\n  z-index: 555;\n  opacity: 0.6; }\n\n.btn-go {\n  margin-top: 20px;\n  margin-bottom: 25px; }\n\n.author {\n  bottom: 0; }\n\ntable {\n  width: 100%;\n  border-collapse: collaps;\n  font-size: 1.2vw; }\n\nth {\n  border: 1px solid #ddd;\n  padding-top: 12px;\n  padding-bottom: 12px;\n  text-align: left;\n  background-color: #4caf50;\n  color: white; }\n\ntr:nth-child(even) {\n  background-color: #f2f2f2; }\n\ntr :hover {\n  background-color: #ddd; }\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  background: url(\"https://static.pexels.com/photos/220182/pexels-photo-220182.jpeg\");\n  background-size: 1440px;\n  background-repeat: repeat;\n  display: compact; }\n\nform {\n  width: 50% !important;\n  margin: 0 auto !important; }\n\n.search-form {\n  border: 2px solid black;\n  padding: 10px 10px 10px 10px;\n  margin: 0 auto;\n  margin-top: 80px;\n  margin-bottom: 40px;\n  width: 500px;\n  background: #463d2a;\n  opacity: 0.8;\n  box-shadow: 5px 5px 10px #444; }\n\n.key,\n.where {\n  display: inline-block;\n  margin-top: 25px; }\n\n.where {\n  width: 20%; }\n\ninput {\n  float: left !important; }\n\n.jumbotron {\n  background-color: #098AE6 !important;\n  opacity: 0.6;\n  font-size: 200%;\n  color: #fff; }\n\n.btn-next {\n  position: fixed;\n  bottom: 0;\n  right: 12px;\n  z-index: 555;\n  opacity: 0.6; }\n\n.btn-go {\n  display: inline-block;\n  margin-top: 0px;\n  margin-bottom: 25px; }\n\n.author {\n  bottom: 0; }\n\ntable {\n  width: 100%;\n  border-collapse: collaps;\n  font-size: 1.2vw;\n  opacity: 0.75; }\n\nth {\n  border: 1px solid #000;\n  padding-top: 12px;\n  padding-bottom: 12px;\n  text-align: center;\n  background-color: #63b966;\n  color: white; }\n\ntd {\n  background-color: #f2f2f2; }\n\nth:hover {\n  background-color: #662b2b; }\n\n.job-title {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -1628,121 +1628,114 @@ var App = function (_Component) {
             //console.log(this.state.rows);
             return _react2.default.createElement(
                 'div',
-                { id: 'search-form' },
-                _react2.default.createElement(
-                    'label',
-                    null,
-                    'Enter entry you want to search for'
-                ),
+                null,
                 _react2.default.createElement(
                     'div',
-                    { className: 'row' },
+                    { className: 'search-form' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-12 col-lg-6' },
+                        { className: 'key ' },
                         _react2.default.createElement('input', {
                             ref: function ref(el) {
                                 return _this4.searchInput = el;
                             },
                             type: 'text',
-                            className: 'form-control key',
+                            className: 'form-control',
                             size: '40',
                             placeholder: 'Search for...' })
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'col-xs-12 col-lg-4' },
+                        { className: 'where' },
                         _react2.default.createElement('input', {
                             ref: function ref(el) {
                                 return _this4.areaInput = el;
                             },
                             type: 'text',
-                            className: 'form-control where',
+                            className: 'form-control',
                             size: '40',
                             placeholder: 'Where...' })
                     ),
                     _react2.default.createElement(
-                        'div',
-                        { className: 'col-xs-12 col-lg-2' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'col-xs-12 col-lg-8' },
-                            _react2.default.createElement(
-                                'button',
-                                {
-                                    type: 'button',
-                                    className: 'btn btn-default btn-go',
-                                    onClick: this.searchHandler },
-                                'Go!'
-                            )
-                        )
-                    ),
+                        'button',
+                        {
+                            disabled: '',
+                            type: 'button',
+                            className: 'btn btn-success btn-go',
+                            onClick: this.searchHandler },
+                        'Go!'
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'col-xs-12 col-lg-12' },
                     _react2.default.createElement(
-                        'div',
-                        { className: 'col-xs-12 col-lg-12' },
-                        _react2.default.createElement(
-                            'button',
-                            {
-                                type: 'button',
-                                className: 'btn btn-success btn-next',
-                                onClick: this.loadMoreHandler },
-                            'More'
-                        )
-                    ),
+                        'button',
+                        {
+                            disabled: '',
+                            type: 'button',
+                            className: 'btn btn-success btn-next',
+                            onClick: this.loadMoreHandler },
+                        'More'
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'col-xs-12 col-lg-12 table-responsive results' },
                     _react2.default.createElement(
-                        'div',
-                        { className: 'col-xs-12 col-lg-12 table-responsive results' },
+                        'table',
+                        { className: 'table-striped' },
                         _react2.default.createElement(
-                            'table',
-                            { className: 'table-striped' },
+                            'thead',
+                            null,
                             _react2.default.createElement(
-                                'thead',
+                                'tr',
                                 null,
                                 _react2.default.createElement(
-                                    'tr',
+                                    'th',
                                     null,
-                                    _react2.default.createElement(
-                                        'th',
-                                        null,
-                                        'Job Title'
-                                    ),
-                                    _react2.default.createElement(
-                                        'th',
-                                        null,
-                                        'Company'
-                                    ),
-                                    _react2.default.createElement(
-                                        'th',
-                                        null,
-                                        'Date posted'
-                                    )
+                                    'Job Title'
+                                ),
+                                _react2.default.createElement(
+                                    'th',
+                                    null,
+                                    'Company'
+                                ),
+                                _react2.default.createElement(
+                                    'th',
+                                    null,
+                                    'Date posted'
                                 )
-                            ),
-                            _react2.default.createElement(
-                                'tbody',
-                                null,
-                                this.state.rows.map(function (row, index) {
-                                    return _react2.default.createElement(
-                                        'tr',
-                                        { key: row.jobTitle + index },
-                                        _react2.default.createElement(
-                                            'td',
-                                            null,
-                                            row.jobTitle
-                                        ),
-                                        _react2.default.createElement(
-                                            'td',
-                                            null,
-                                            row.company
-                                        ),
-                                        _react2.default.createElement(
-                                            'td',
-                                            null,
-                                            row.datePosted
-                                        )
-                                    );
-                                })
                             )
+                        ),
+                        _react2.default.createElement(
+                            'tbody',
+                            null,
+                            this.state.rows.map(function (row, index) {
+                                return _react2.default.createElement(
+                                    'tr',
+                                    { key: row.jobTitle + index },
+                                    _react2.default.createElement(
+                                        'td',
+                                        { className: 'job-title' },
+                                        _react2.default.createElement(
+                                            'a',
+                                            { href: "https://duunitori.fi/tyopaikat/tyo/" + row.jobLink, target: '_blank' },
+                                            row.jobTitle
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        'td',
+                                        null,
+                                        row.company
+                                    ),
+                                    _react2.default.createElement(
+                                        'td',
+                                        null,
+                                        row.datePosted
+                                    )
+                                );
+                            })
                         )
                     )
                 )

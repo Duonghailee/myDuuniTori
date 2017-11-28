@@ -2,33 +2,51 @@ $orange-main: #F49005;
 $blue-title: #098AE6;
 $orange-title: #F18904;
 $black:#1F1641;
-$green: #4caf50;
-$even-row-white: #f2f2f2;
+$green: #63b966;
+$row-white: #f2f2f2;
+body {
+    margin: 0;
+    background: url('https://static.pexels.com/photos/220182/pexels-photo-220182.jpeg');
+    background-size: 1440px;
+    background-repeat: repeat;
+    display: compact;
+}
+
 form {
     width: 50% !important;
     margin: 0 auto !important;
 }
 
+.search-form {
+    border: 2px solid black;
+    padding: 10px 10px 10px 10px;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    width: 500px;
+    background: rgb(70, 61, 42);
+    opacity: 0.8;
+    box-shadow: 5px 5px 10px #444;
+}
+
 .key,
 .where {
     display: inline-block;
+    margin-top: 25px;
+}
+.where {
+    width: 20%;
 }
 
 input {
     float: left !important;
 }
 
-#page {
-    color: $black;
-    background-color: $orange-main;
-}
-
 .jumbotron {
     background-color: $blue-title !important;
-}
-
-.content {
-    background-color: $orange-title !important;
+    opacity: 0.6;
+    font-size: 200%;
+    color: #fff;
 }
 
 .btn-next {
@@ -36,11 +54,12 @@ input {
     bottom: 0;
     right: 12px;
     z-index: 555;
-    opacity: 0.6 ;
+    opacity: 0.6;
 }
 
 .btn-go {
-    margin-top: 20px;
+    display: inline-block;
+    margin-top: 0px;
     margin-bottom: 25px;
 }
 
@@ -52,21 +71,27 @@ table {
     width: 100%;
     border-collapse: collaps;
     font-size: 1.2vw;
+    opacity: 0.75;
 }
 
 th {
-    border: 1px solid #ddd;
+    border: 1px solid #000;
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: $green;
     color: white;
+    
 }
 
-tr:nth-child(even) {
-    background-color: $even-row-white;
+td {
+    background-color: $row-white;
 }
 
-tr :hover {
-    background-color: #ddd;
+th:hover {
+    background-color: rgb(102, 43, 43);
 }
+.job-title {
+    cursor: pointer;
+}
+
