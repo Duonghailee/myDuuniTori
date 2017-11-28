@@ -8,8 +8,6 @@ function getData({area, search, next}) {
 
 }
 
-
-
 class App extends Component {
     constructor() {
         super();
@@ -17,22 +15,27 @@ class App extends Component {
             rows: [],
             next: 1
         };
-        this.searchHandler = this.search.bind(this);
-        this.loadMoreHandler = this.loadMore.bind(this);
+        this.searchHandler = this
+            .search
+            .bind(this);
+        this.loadMoreHandler = this
+            .loadMore
+            .bind(this);
     }
-
-   
 
     search() {
         const area = this.areaInput.value;
         const search = this.searchInput.value;
-        getData({area, search, next:1}).then(data => this.setState({rows: data.jobs, next: 1}))
+        getData({area, search, next: 1}).then(data => this.setState({rows: data.jobs, next: 1}))
     }
     loadMore() {
         const area = this.areaInput.value;
         const search = this.searchInput.value;
         getData({area, search, next: this.state.next}).then(data => this.setState({
-            rows: this.state.rows.concat(data.jobs), 
+            rows: this
+                .state
+                .rows
+                .concat(data.jobs),
             next: data.next
         }))
     }
@@ -60,14 +63,34 @@ class App extends Component {
                             size="40"
                             placeholder="Where..."/>
                     </div>
+
                     <div className="col-xs-12 col-lg-2">
                         <div className="col-xs-12 col-lg-8">
-                            <button type="button" className="btn btn-default btn-go" onClick={this.searchHandler}>Go!</button>
+                            <button
+                                type="button"
+                                className="btn btn-default btn-go"
+                                onClick={this.searchHandler}>Go!
+                            </button>
                         </div>
                     </div>
-                    <button type="button" className="btn btn-success btn-next" onClick={this.loadMoreHandler}>More</button>
-                    <div className="results">
-                        <table>
+
+                    <div className="col-xs-12 col-lg-12">
+                        <button
+                            type="button"
+                            className="btn btn-success btn-next"
+                            onClick={this.loadMoreHandler}>More
+                        </button>
+                    </div>
+
+                    <div className="col-xs-12 col-lg-12 table-responsive results">
+                        <table className="table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Job Title</th>
+                                    <th>Company</th>
+                                    <th>Date posted</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {this
                                     .state
@@ -87,7 +110,6 @@ class App extends Component {
         );
     }
 }
-
 
 render(
     <App/>, document.getElementById('app'));
