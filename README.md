@@ -8,7 +8,7 @@
 `npm run build`
 
 - Back end built
- In order to query from API, you will need an API_DUUNI environment variable 
+ In order to query from API, you will need an API_DUUNI environment variable  
 `[API_DUUNI] npm run start`
 
 ## Front end side
