@@ -15,8 +15,12 @@ class App extends Component {
             rows: [],
             next: 1
         };
-        this.searchHandler = this.search.bind(this);
-        this.loadMoreHandler = this.loadMore.bind(this);
+        this.searchHandler = this
+            .search
+            .bind(this);
+        this.loadMoreHandler = this
+            .loadMore
+            .bind(this);
     }
 
     search() {
@@ -28,7 +32,10 @@ class App extends Component {
         const area = this.areaInput.value;
         const search = this.searchInput.value;
         getData({area, search, next: this.state.next}).then(data => this.setState({
-            rows: this.state.rows.concat(data.jobs),
+            rows: this
+                .state
+                .rows
+                .concat(data.jobs),
             next: data.next
         }))
     }
@@ -83,9 +90,14 @@ class App extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.rows.map((row, index) => (
+                            {this
+                                .state
+                                .rows
+                                .map((row, index) => (
                                     <tr key={row.jobTitle + index}>
-                                        <td className="job-title"><a href={"https://duunitori.fi/tyopaikat/tyo/"+row.jobLink} target="_blank">{row.jobTitle}</a></td>
+                                        <td className="job-title">
+                                            <a href={"https://duunitori.fi/tyopaikat/tyo/" + row.jobLink} target="_blank">{row.jobTitle}</a>
+                                        </td>
                                         <td>{row.company}</td>
                                         <td>{row.datePosted}</td>
                                     </tr>

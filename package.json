@@ -7,8 +7,7 @@
     "build": "webpack",
     "postinstall": "npm run build",
     "start": "node server.js",
-    "watch": "webpack-dev-server",
-    "test": "node test.js"
+    "watch": "webpack-dev-server"
   },
   "keywords": [],
   "author": "hailee",
