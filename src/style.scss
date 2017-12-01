@@ -12,13 +12,7 @@ body {
     display: compact;
 }
 
-form {
-    width: 50% !important;
-    margin: 0 auto !important;
-}
-
 .search-form {
-    border: 2px solid black;
     padding: 10px 10px 10px 10px;
     margin: 0 auto;
     margin-top: 80px;
@@ -27,6 +21,7 @@ form {
     background: rgb(70, 61, 42);
     opacity: 0.8;
     box-shadow: 5px 5px 10px #444;
+    border-radius: 10px ;
 }
 
 .key,
@@ -94,6 +89,8 @@ th:hover {
 .job-title {
     cursor:pointer;
 }
+
+
 
 @media screen and (max-width: 600px) {
     .search-form {

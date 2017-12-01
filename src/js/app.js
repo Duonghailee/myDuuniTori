@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import {render} from 'react-dom';
+import { setTimeout } from 'timers';
 
 function getData({area, search, next}) {
     return fetch(`/api?area=${area}&search=${search}&next=${next}`).then(res => res.json());
@@ -22,13 +23,23 @@ class App extends Component {
             .loadMore
             .bind(this);
     }
+    loading() {
+        setTimeout(() => {
+            $('.fa').removeClass('fa-spinner');
+        },1000);
+    }
 
     search() {
+        $('.fa').addClass('fa-spinner');
         const area = this.areaInput.value;
         const search = this.searchInput.value;
-        getData({area, search, next: 1}).then(data => this.setState({rows: data.jobs, next: 1}))
+        getData({area, search, next: 1}).then(data => this.setState({rows: data.jobs, next: 1}));
+        this.loading();
+        
+
     }
     loadMore() {
+        $('.fa').addClass('fa-spinner');
         const area = this.areaInput.value;
         const search = this.searchInput.value;
         getData({area, search, next: this.state.next}).then(data => this.setState({
@@ -38,6 +49,7 @@ class App extends Component {
                 .concat(data.jobs),
             next: data.next
         }))
+        this.loading();
     }
     render() {
         //console.log(this.state.rows);
@@ -68,8 +80,11 @@ class App extends Component {
                         className="btn btn-success btn-go"
                         onClick={this.searchHandler}>Go!
                     </button>
-
+                    
                 </div>
+
+                <i className="fa fa-pulse fa-3x fa-fw"></i>
+                    <span className="sr-only">Loading...</span>
 
                 <div className="col-xs-12 col-lg-12">
                     <button
@@ -79,6 +94,8 @@ class App extends Component {
                         onClick={this.loadMoreHandler}>More
                     </button>
                 </div>
+
+                <div id="loading"></div>∫
 
                 <div className="col-xs-12 col-lg-12 table-responsive results">
                     <table className="table-striped">
@@ -90,10 +107,9 @@ class App extends Component {
                             </tr>
                         </thead>
                         <tbody>
+                           
                             {this
-                                .state
-                                .rows
-                                .map((row, index) => (
+                                .state.rows.map((row, index) => (
                                     <tr key={row.jobTitle + index}>
                                         <td className="job-title">
                                             <a href={"https://duunitori.fi/tyopaikat/tyo/" + row.jobLink} target="_blank">{row.jobTitle}</a>
