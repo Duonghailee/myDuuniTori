@@ -20,7 +20,8 @@ app.get('/api', function (req, res) {
       page: next,
       format: "json"
     }
-  }, function (error, response, body) {
+  }, function (error, response, body) { 
+    console.log(body);
     if (error) {
       console.error(error);
     } else {
@@ -47,4 +48,6 @@ const server = app.listen(process.env.PORT || 3000, function () {
   const host = server.address().address;
   const port = server.address().port;
   console.log('app is listening at http://%s:%s', host, port);
-});
+})
+
+

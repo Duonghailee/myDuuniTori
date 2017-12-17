@@ -1,5 +1,4 @@
 $orange-main: #F49005;
-$blue-title: #098AE6;
 $orange-title: #F18904;
 $black:#1F1641;
 $green: #63b966;
@@ -12,36 +11,29 @@ body {
     display: compact;
 }
 
-.search-form {
-    padding: 10px 10px 10px 10px;
-    margin: 0 auto;
-    margin-top: 80px;
-    margin-bottom: 40px;
-    width: 500px;
-    background: rgb(70, 61, 42);
-    opacity: 0.8;
-    box-shadow: 5px 5px 10px #444;
-    border-radius: 10px ;
+.form-container {
+    padding-top: 2.0em;
+    padding-bottom: 2.0em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    background: rgba(#463d2a, 0.8);
+    width: 45%;
+    margin: auto;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    border-radius: 1em;
 }
 
-.key,
-.where {
-    display: inline-block;
-    margin-top: 25px;
+.form-control.key {
+    width: 60%;
 }
-.where {
+
+.form-control.where {
     width: 20%;
 }
 
-input {
-    float: left !important;
-}
-
-.jumbotron {
-    background-color: $blue-title !important;
-    opacity: 0.6;
-    font-size: 200%;
-    color: #fff;
+.btn-go {
+    width: 20%;
 }
 
 .btn-next {
@@ -52,30 +44,20 @@ input {
     opacity: 0.6;
 }
 
-.btn-go {
-    display: inline-block;
-    margin-top: 0px;
-    margin-bottom: 25px;
-}
-
-.author {
-    bottom: 0;
-}
-
-table {
+.table-result {
+    margin-top: 2em;
     width: 100%;
     border-collapse: collaps;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     opacity: 0.75;
 }
 
 th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 1em;
+    padding-bottom: 1em;
     text-align: center;
-    background-color: $green;
+    background: rgba(#463d2a, 0.8);
     color: white;
-    
 }
 
 td {
@@ -85,18 +67,31 @@ td {
 th:hover {
     background-color: rgb(102, 43, 43);
 }
+
+a,
+button,
 .job-title {
-    cursor:pointer;
+    cursor: pointer;
 }
 
-
+.loading {
+    display: inline-block;
+    margin: auto;
+    font-size: 2em;
+}
 
 @media screen and (max-width: 600px) {
-    .search-form {
-        width: 300px;
-        height: 180px;
+    .form-container {
+        width: 100%;
     }
-    .where {
-        width: 40%;
+    .form-control.key {
+        width: 100%;
     }
-  }
+    .form-control.where {
+        width: 100%;
+    }
+    .btn-go {
+        width: 100%;
+    }
+}
+
