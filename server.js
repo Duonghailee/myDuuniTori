@@ -21,7 +21,7 @@ app.get('/api', function (req, res) {
       format: "json"
     }
   }, function (error, response, body) { 
-    console.log(body);
+    //console.log(body);
     if (error) {
       console.error(error);
     } else {
@@ -38,9 +38,15 @@ function mapJobs(jobList) {
     return [];
   }
   return jobList.map(row => {
-    return {jobTitle: row.heading, company: row.company_name, datePosted: row.date_posted, jobLink: row.slug}
+    return {jobTitle: row.heading, company: row.company_name, datePosted: formatDate(row.date_posted), jobLink: row.slug}
+    console.log(typeOf(row.date_posted));
   })
 }
+
+const formatDate = (d => {
+  const backToDate = new Date(d);
+  return backToDate.getDate() + '/'+ (backToDate.getMonth() + 1)  + '/' + backToDate.getFullYear() + '-' + backToDate.getHours() + ':' +backToDate.getMinutes();
+});
 
 //separte server
 

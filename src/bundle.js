@@ -991,7 +991,7 @@ exports = module.exports = __webpack_require__(18)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  background: url(\"https://static.pexels.com/photos/220182/pexels-photo-220182.jpeg\");\n  background-size: 1440px;\n  background-repeat: repeat;\n  display: compact; }\n\nform {\n  width: 50% !important;\n  margin: 0 auto !important; }\n\n.search-form {\n  border: 2px solid black;\n  padding: 10px 10px 10px 10px;\n  margin: 0 auto;\n  margin-top: 80px;\n  margin-bottom: 40px;\n  width: 500px;\n  background: #463d2a;\n  opacity: 0.8;\n  box-shadow: 5px 5px 10px #444; }\n\n.key,\n.where {\n  display: inline-block;\n  margin-top: 25px; }\n\n.where {\n  width: 20%; }\n\ninput {\n  float: left !important; }\n\n.jumbotron {\n  background-color: #098AE6 !important;\n  opacity: 0.6;\n  font-size: 200%;\n  color: #fff; }\n\n.btn-next {\n  position: fixed;\n  bottom: 0;\n  right: 12px;\n  z-index: 555;\n  opacity: 0.6; }\n\n.btn-go {\n  display: inline-block;\n  margin-top: 0px;\n  margin-bottom: 25px; }\n\n.author {\n  bottom: 0; }\n\ntable {\n  width: 100%;\n  border-collapse: collaps;\n  font-size: 1.2vw;\n  opacity: 0.75; }\n\nth {\n  border: 1px solid #000;\n  padding-top: 12px;\n  padding-bottom: 12px;\n  text-align: center;\n  background-color: #63b966;\n  color: white; }\n\ntd {\n  background-color: #f2f2f2; }\n\nth:hover {\n  background-color: #662b2b; }\n\n.job-title {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  background: url(\"https://static.pexels.com/photos/220182/pexels-photo-220182.jpeg\");\n  background-size: 1440px;\n  background-repeat: repeat;\n  display: compact; }\n\n.form-container {\n  padding-top: 2.0em;\n  padding-bottom: 2.0em;\n  padding-left: 1.5em;\n  padding-right: 1.5em;\n  background: rgba(70, 61, 42, 0.8);\n  width: 45%;\n  margin: auto;\n  margin-top: 4em;\n  margin-bottom: 4em;\n  border-radius: 1em; }\n\n.form-control.key {\n  width: 60%; }\n\n.form-control.where {\n  width: 20%; }\n\n.btn-go {\n  width: 20%; }\n\n.btn-next {\n  position: fixed;\n  bottom: 0;\n  right: 12px;\n  z-index: 555;\n  opacity: 0.6; }\n\n.table-result {\n  margin-top: 2em;\n  width: 100%;\n  border-collapse: collaps;\n  font-size: 1.5vw;\n  opacity: 0.75; }\n\nth {\n  padding-top: 1em;\n  padding-bottom: 1em;\n  text-align: center;\n  background: rgba(70, 61, 42, 0.8);\n  color: white; }\n\ntd {\n  background-color: #f2f2f2; }\n\nth:hover {\n  background-color: #662b2b; }\n\na,\nbutton,\n.job-title {\n  cursor: pointer; }\n\n.loading {\n  display: inline-block;\n  margin: auto;\n  font-size: 2em; }\n\n@media screen and (max-width: 600px) {\n  .form-container {\n    width: 100%; }\n  .form-control.key {\n    width: 100%; }\n  .form-control.where {\n    width: 100%; }\n  .btn-go {\n    width: 100%; } }\n", ""]);
 
 // exports
 
@@ -1578,101 +1578,198 @@ function getData(_ref) {
     });
 }
 
-var App = function (_Component) {
-    _inherits(App, _Component);
+var Navibar = function (_Component) {
+    _inherits(Navibar, _Component);
 
-    function App() {
-        _classCallCheck(this, App);
+    function Navibar() {
+        _classCallCheck(this, Navibar);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-        _this.state = {
-            rows: [],
-            next: 1
-        };
-        _this.searchHandler = _this.search.bind(_this);
-        _this.loadMoreHandler = _this.loadMore.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (Navibar.__proto__ || Object.getPrototypeOf(Navibar)).apply(this, arguments));
     }
 
-    _createClass(App, [{
-        key: 'search',
-        value: function search() {
-            var _this2 = this;
-
-            var area = this.areaInput.value;
-            var search = this.searchInput.value;
-            getData({ area: area, search: search, next: 1 }).then(function (data) {
-                return _this2.setState({ rows: data.jobs, next: 1 });
-            });
-        }
-    }, {
-        key: 'loadMore',
-        value: function loadMore() {
-            var _this3 = this;
-
-            var area = this.areaInput.value;
-            var search = this.searchInput.value;
-            getData({ area: area, search: search, next: this.state.next }).then(function (data) {
-                return _this3.setState({
-                    rows: _this3.state.rows.concat(data.jobs),
-                    next: data.next
-                });
-            });
-        }
-    }, {
+    _createClass(Navibar, [{
         key: 'render',
         value: function render() {
-            var _this4 = this;
-
-            //console.log(this.state.rows);
             return _react2.default.createElement(
                 'div',
                 null,
                 _react2.default.createElement(
-                    'div',
-                    { className: 'search-form' },
+                    'nav',
+                    { className: 'navbar navbar-expand-lg navbar-dark bg-primary' },
                     _react2.default.createElement(
-                        'div',
-                        { className: 'key ' },
-                        _react2.default.createElement('input', {
-                            ref: function ref(el) {
-                                return _this4.searchInput = el;
-                            },
-                            type: 'text',
-                            className: 'form-control',
-                            size: '40',
-                            placeholder: 'Search for...' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'where' },
-                        _react2.default.createElement('input', {
-                            ref: function ref(el) {
-                                return _this4.areaInput = el;
-                            },
-                            type: 'text',
-                            className: 'form-control',
-                            size: '40',
-                            placeholder: 'Where...' })
+                        'a',
+                        { className: 'navbar-brand', href: 'https://duunitori.fi', target: '_blank' },
+                        'Duunitori'
                     ),
                     _react2.default.createElement(
                         'button',
-                        {
-                            disabled: '',
-                            type: 'button',
-                            className: 'btn btn-success btn-go',
-                            onClick: this.searchHandler },
-                        'Go!'
+                        { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarSupportedContent', 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
+                        _react2.default.createElement('span', { className: 'navbar-toggler-icon' })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'collapse navbar-collapse', id: 'navbarSupportedContent' },
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'navbar-nav mr-auto' },
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'nav-item active' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { className: 'nav-link', href: '#' },
+                                    'Home ',
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'sr-only' },
+                                        '(Current)'
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'nav-tiem' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { className: 'nav-link' },
+                                    'Mission'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'nav-tiem' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { className: 'nav-link' },
+                                    'Value'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'nav-tiem' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { className: 'nav-link' },
+                                    'Reference'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'form',
+                            { className: 'form-inline my-2 my-lg-0' },
+                            _react2.default.createElement('input', { className: 'form-control mr-sm-2', type: 'search', placeholder: 'Search', 'aria-label': 'Search' }),
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn btn-outline-success my-2 my-sm-0', type: 'submit' },
+                                'Search'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Navibar;
+}(_react.Component);
+
+var App = function (_Component2) {
+    _inherits(App, _Component2);
+
+    function App() {
+        _classCallCheck(this, App);
+
+        var _this2 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+        _this2.state = {
+            rows: [],
+            next: 1,
+            isLoading: false
+        };
+        _this2.searchHandler = _this2.search.bind(_this2);
+        _this2.loadMoreHandler = _this2.loadMore.bind(_this2);
+        return _this2;
+    }
+
+    _createClass(App, [{
+        key: 'loading',
+        value: function loading() {
+            this.setState({ isLoading: true });
+        }
+    }, {
+        key: 'search',
+        value: function search() {
+            var _this3 = this;
+
+            var area = this.areaInput.value;
+            var search = this.searchInput.value;
+            getData({ area: area, search: search, next: 1 }).then(function (data) {
+                return _this3.setState({ rows: data.jobs, next: 1, isLoading: false });
+            });
+            this.loading();
+        }
+    }, {
+        key: 'loadMore',
+        value: function loadMore() {
+            var _this4 = this;
+
+            var area = this.areaInput.value;
+            var search = this.searchInput.value;
+            getData({ area: area, search: search, next: this.state.next }).then(function (data) {
+                return _this4.setState({
+                    rows: _this4.state.rows.concat(data.jobs),
+                    next: data.next,
+                    isLoading: false
+                });
+            });
+            this.loading();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this5 = this;
+
+            //console.log(this.state.rows);
+            return _react2.default.createElement(
+                'div',
+                { className: 'text-center' },
+                _react2.default.createElement(Navibar, null),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'form-container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'form-inline' },
+                        _react2.default.createElement('input', { className: 'form-control key',
+                            ref: function ref(el) {
+                                return _this5.searchInput = el;
+                            },
+                            type: 'text',
+                            size: '40',
+                            placeholder: 'Search for...' }),
+                        _react2.default.createElement('input', { className: 'form-control where',
+                            ref: function ref(el) {
+                                return _this5.areaInput = el;
+                            },
+                            type: 'text',
+                            size: '40',
+                            placeholder: 'Where...' }),
+                        _react2.default.createElement(
+                            'button',
+                            {
+                                className: 'btn btn-success btn-go',
+                                onClick: this.searchHandler },
+                            'Go!'
+                        )
                     )
                 ),
+                _react2.default.createElement('div', { className: this.state.isLoading ? 'loading fa fa-spinner fa-spin' : '' }),
                 _react2.default.createElement(
                     'div',
                     { className: 'col-xs-12 col-lg-12' },
                     _react2.default.createElement(
                         'button',
                         {
-                            disabled: '',
                             type: 'button',
                             className: 'btn btn-success btn-next',
                             onClick: this.loadMoreHandler },
@@ -1684,7 +1781,7 @@ var App = function (_Component) {
                     { className: 'col-xs-12 col-lg-12 table-responsive results' },
                     _react2.default.createElement(
                         'table',
-                        { className: 'table-striped' },
+                        { className: 'table-striped table-result' },
                         _react2.default.createElement(
                             'thead',
                             null,

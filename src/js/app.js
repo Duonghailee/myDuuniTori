@@ -2,7 +2,6 @@
 
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import { setTimeout } from 'timers';
 
 function getData({area, search, next}) {
     return fetch(`/api?area=${area}&search=${search}&next=${next}`).then(res => res.json());
@@ -94,7 +93,6 @@ class App extends Component {
                             size="40"
                             placeholder="Where..." />
                         <button
-                            disabled=""
                             className="btn btn-success btn-go"
                             onClick={this.searchHandler}>Go!
                     </button>
@@ -105,7 +103,6 @@ class App extends Component {
 
                 <div className="col-xs-12 col-lg-12">
                     <button
-                        disabled=""
                         type="button"
                         className="btn btn-success btn-next"
                         onClick={this.loadMoreHandler}>More
