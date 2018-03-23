@@ -4,6 +4,9 @@
 [Let's start hunting jobs](https://polar-beach-12473.herokuapp.com/)
 
 ## How to start
+- First you need install project's dependencies
+`npm install`
+
 - To build front end
 `npm run build`
 
@@ -18,7 +21,8 @@
 - SASS
 
 ## Back end
-- Express server
+- Nodejs
+- Express Library server
 
 
 
