@@ -23,7 +23,7 @@ RUN npm cache clean --force && npm install
 # build front-end
 RUN npm run build
 
-# env
+# env, the read API key is needed
 ENV API_DUUNI=23sfs
 
 # expose port
