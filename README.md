@@ -24,7 +24,11 @@
 - Nodejs
 - Express Library server
 
-
-
-
-
+## Containeize with docker 
+- create the Dockerfile as shown in the same level directory
+- then build the docker image from Dockerfile:
+`docker build . -t duunitori-app`
+- In order to run the backend server, DUUNI_API env is needed and for security reason I only put the key in heroku deployment.
+- run the app and map to localhost:3000
+`docker run -p 3000:3000 duunitori-app`
+- You should see the app at your localhost:3000
