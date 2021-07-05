@@ -1,4 +1,8 @@
+# depdencies
 node_modules
+
 www/bundle.js
 www/style.scss
 
+# API key
+.env
