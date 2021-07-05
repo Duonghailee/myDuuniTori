@@ -1,0 +1,43 @@
+name: Release DuuniWebapp with Docker # Name of the workflow
+
+# On a push to the branch named master
+on:
+  push:
+    branches: 
+      - master
+
+# Job called build runs-on ubuntu-latest
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout to the repository (the actions don't actually need this since they use the repository context anyway)
+    - uses: actions/checkout@v2 
+
+    # We need to login so we can later push the image without issues. 
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with: 
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+            
+    # Builds my duunitori webapp
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: duuni_devop:latest

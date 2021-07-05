@@ -4,9 +4,9 @@
   "description": "My duunitori project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "frontend": "webpack",
     "postinstall": "npm run build",
-    "start": "node server.js",
+    "backend": "node server.js",
     "watch": "webpack-dev-server"
   },
   "keywords": [],

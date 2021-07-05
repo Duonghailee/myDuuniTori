@@ -53,7 +53,7 @@ const formatDate = (d => {
 const server = app.listen(process.env.PORT || 3000, function () {
   const host = server.address().address;
   const port = server.address().port;
-  console.log('app is listening at http://%s:%s', host, port);
+  console.log('app listens at http://%s:%s', host, port);
 })
 
 

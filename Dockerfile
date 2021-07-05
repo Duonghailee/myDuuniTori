@@ -21,14 +21,14 @@ COPY . .
 RUN npm cache clean --force && npm install
 
 # build front-end
-RUN npm run build
-
-# env, the read API key is needed
-ENV API_DUUNI=23sfs
+CMD ["npm", "run", "frontend"]
 
 # expose port
 EXPOSE 3000
 
 # build back-end
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "backend"]
+
+# # run dev env
+# CMD ["npm", "run", "watch"]
 
