@@ -22,7 +22,7 @@ RUN npm install -y
 
 # build front-end
 # CMD ["npm", "run", "frontend"]
-RUN npm run build
+RUN npm run frontend
 
 # expose port
 EXPOSE 3000
