@@ -12,13 +12,13 @@ RUN apt-get install -y curl
 
 # install node
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash 
-RUN  apt install -y nodejs
+RUN apt-get install -y nodejs
 
 # copy git 
 COPY . .
 
 # install all dependenciess
-RUN npm install
+RUN npm install -y
 
 # build front-end
 # CMD ["npm", "run", "frontend"]
