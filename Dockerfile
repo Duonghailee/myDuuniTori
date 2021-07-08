@@ -17,11 +17,12 @@ RUN  apt install -y nodejs
 # copy git 
 COPY . .
 
-# install all dependencies
-RUN npm cache clean --force && npm install
+# install all dependenciess
+RUN npm install
 
 # build front-end
-CMD ["npm", "run", "frontend"]
+# CMD ["npm", "run", "frontend"]
+RUN npm run build
 
 # expose port
 EXPOSE 3000
