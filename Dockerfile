@@ -4,21 +4,21 @@ FROM ubuntu:18.04
 # set current working dir
 WORKDIR /usr/src/app
 
-# update apt-get curl
-RUN apt-get update
-
 # install curl
-RUN apt-get install -y curl
+RUN apt-get update && apt-get install -y curl
 
 # install node
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash 
-RUN apt-get install -y nodejs
+RUN apt-get update && apt-get install -y build-essential nodejs
+
+# check that we have npm install
+RUN npm -v
 
 # copy git 
 COPY . .
 
 # install all dependenciess
-RUN npm install -y
+RUN npm install
 
 # build front-end
 # CMD ["npm", "run", "frontend"]
