@@ -22,7 +22,7 @@ jobs:
         heroku_email: "duonghailee@gmail.com"
         usedocker: true
         docker_build_args: |
-          API_DUUNI
+          API_KEY
       env:
         NODE_ENV: production
         API_DUUNI: ${{ secrets.API_DUUNI }}
