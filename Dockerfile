@@ -1,5 +1,5 @@
 # get ubuntu
-FROM node:10
+FROM node:10-alpine as build-stage
 
 # set current working dir
 WORKDIR /usr/src/app
@@ -11,9 +11,6 @@ WORKDIR /usr/src/app
 # RUN curl -sL https://deb.nodesource.com/setup_14.x | bash 
 # RUN apt-get update && apt-get install -y build-essential nodejs
 
-# check that we have npm install
-RUN npm -v
-
 # copy git 
 COPY . .
 
@@ -22,15 +19,20 @@ RUN npm install
 
 # build front-end
 # CMD ["npm", "run", "frontend"]
+
 RUN npm run frontend
+
+FROM node:10-alpine
+
+COPY --from=build-stage /usr/src/app .
 
 # expose port
 EXPOSE 3000
-ARG API_KEY='weneedapikey'
+ARG API_DUUNI='weneedapikey'
 
 # build back-end
 ENV API_DUUNI=${API_KEY}
-CMD ["npm", "run", "backend"]
+CMD ${API_DUUNI} npm run backend
 
 # # run dev env
 # CMD ["npm", "run", "watch"]
